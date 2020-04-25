@@ -1,0 +1,46 @@
+<header class="header bg-white border-bottom shadow-sm">
+    <nav class="navbar navbar-expand-lg">
+        <div class="header-left">
+            <span class="navbar-brand logo">Analyzer</span>
+        </div>
+        <div class="header-right">
+            <div class="left-nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/analyzer" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/analyzer/orders" routerLinkActive="active">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/analyzer/holdings" routerLinkActive="active">Holdings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/analyzer/funds" routerLinkActive="active">Funds</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-nav">
+                <div class="user-nav" dropdown>
+                    <label class="user-name dropdown-toggle" dropdownToggle aria-controls="dropdown-alignment">
+                        <i class="fa fa-user" aria-hidden="true"></i>Netai Nayek
+                    </label>
+                    <ul *dropdownMenu class="user-dropdown dropdown-menu dropdown-menu-right">
+                        <li role="menuitem"><a class="dropdown-item" routerLink="/analyzer/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                        <li class="divider dropdown-divider"></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container analyzer-page main-container">
+    <div class="analyzer-left">
+        <analyzer-watchlist></analyzer-watchlist>
+    </div>
+    <div class="analyzer-right">
+        <router-outlet></router-outlet>
+    </div>
+</div>

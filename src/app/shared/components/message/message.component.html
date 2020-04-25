@@ -1,0 +1,18 @@
+<div class="message-group message-{{position}}" *ngIf="messages.length>0">
+    <div class="message message-{{message.type}}" *ngFor="let message of messages; let idx = index">
+        <div class="message-header">
+            <strong class="mr-auto">
+                <span *ngIf="message.type === 'error'">{{message.title?message.title:'Error'}}</span>
+                <span *ngIf="message.type === 'success'">{{message.title?message.title:'Success'}}</span>
+                <span *ngIf="message.type === 'info'">{{message.title?message.title:'Info'}}</span>
+                <span *ngIf="message.type === 'warning'">{{message.title?message.title:'Warning'}}</span>
+            </strong>
+            <button type="button" class="ml-2 mb-1 close" (click)="close(idx)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="message-body">
+            {{message.message}}
+        </div>
+    </div>
+</div>

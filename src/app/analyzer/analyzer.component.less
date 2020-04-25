@@ -1,0 +1,89 @@
+.analyzer-page {
+    position: relative;
+    display: flex;
+    background: #fff;
+    padding-bottom: 0;
+    .analyzer-left {
+        flex: 0 0 25rem;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+    }
+    .analyzer-right {
+        flex: 1 1;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+        border-right: #ccc;
+        overflow: auto;
+        position: relative;
+    }
+}
+.header {
+    .header-left {
+        flex: 0 0 25rem;
+    }
+    .header-right {
+        flex: 1 1;
+        .left-nav {
+            width: 85%;
+            display: inline-block;
+            border-right: #ccc 1px solid;
+            text-align: right;
+            color: #9b9b9b;
+            .navbar-nav {
+                width: 45%;
+                margin-left: auto;
+                .nav-item {
+                    .nav-link {
+                        padding: 0 1.3rem;
+                        line-height: 2rem;
+                        display: inline-block;
+                        text-decoration: none;
+                        color: #9b9b9b;
+                        &.active{
+                            color: #000;
+                        }
+                        &:hover{
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+        .right-nav {
+            width: 15%;
+            display: inline-block;
+            text-align: right;
+            .user-name {
+                cursor: pointer;
+                color: #9b9b9b;
+                margin: 0;
+                line-height: 2rem;
+                i {
+                    font-size: 1.5rem;
+                    vertical-align: middle;
+                    margin-right: .5rem;
+                }
+                &:hover {
+                    color: #000;
+                }
+                &:after {
+                    content: none;
+                }
+            }
+            .user-dropdown {
+                border-radius: 0;
+                right: 10px;
+                li {
+                    a {
+                        color: #9b9b9b;
+                        i {
+                            margin-right: .5rem;
+                        }
+                    }
+                    a:hover {
+                        background-color: #f4f4f4;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}

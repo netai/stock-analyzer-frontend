@@ -1,0 +1,186 @@
+.watchlist-container {
+    position: fixed;
+    height: 100%;
+    width: 25rem;
+    z-index: 1;
+    overflow-y: auto;
+    .instrument-search {
+        height: 3.5rem;
+        display: block;
+        position: relative;
+        box-sizing: border-box;
+        border-bottom: 1px solid #f1f1f1;
+        .search-icon {
+            position: absolute;
+            left: 1.3rem;
+            top: 1.2rem;
+            z-index: 1;
+            opacity: .5;
+        }
+        .search-input {
+            height: 100%;
+            .search-input-field {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                border: none;
+                text-indent: 3rem;
+                color: #9b9b9b;
+                height: 100%;
+                &:focus {
+                    outline: none;
+                }
+            }
+            
+        }
+    }
+    .instrument-list {
+        margin-bottom: 8.5rem;
+        position: relative;
+        .instrument {
+            position: relative;
+            color: #4a4a4a;
+            border-bottom: 1px solid #f1f1f1;
+            cursor: pointer;
+            text-transform: uppercase;
+            &:hover {
+                background-color: #f7f7f7;
+            }
+            &:hover .action {
+                display: block;
+            }
+            .info {
+                .symbol {
+                    padding-right: 0;
+                    padding: 1rem 1.5rem;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    position: relative;
+                    width: 40%;
+                }
+                .price {
+                    padding: 1rem 1.5rem;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    text-align: right;
+                    width: 60%;
+                    span, i {
+                        display: inline-block;
+                    }
+                    .fa {
+                        padding-left: .5rem;
+                    }
+                    .close-price {
+                        min-width: 5rem;
+                        text-align: right;
+                    }
+                }
+            }
+            .action {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                padding: .7rem 2rem .7rem 0;
+                display: none;
+                button,a {
+                    margin-left: .5rem;
+                    &:focus {
+                        box-shadow: none;
+                    }
+                    &.btn-icon {
+                        color: #444;
+                        background: #fff;
+                        border-color: #9b9b9b;
+                        padding: .2rem .7rem;
+                        &:hover {
+                            background: #9b9b9b;
+                            color: #fff;
+                            border-color: #9b9b9b;
+                        }
+                    }
+                    &.btn-chart {
+                        padding: .2rem .5rem;
+                    }
+                }
+            }
+        }
+        .instrument-green {
+            color: #4caf50;
+        }
+        .instrument-red {
+            color: #df514c;
+        }
+        .empty-watchlist {
+            text-align: center;
+            padding: 4rem;
+        }
+    }
+    .watchlist-selector {
+        bottom: 0;
+        width: 25rem;
+        position: fixed;
+        box-sizing: border-box;
+        border-top: 1px solid #eee;
+        background-color: #fff;
+        ul {
+            li {
+                padding: 1rem 1.5rem;
+                cursor: pointer;
+                text-align: center;
+                color: #9b9b9b;
+                display: inline-block;
+                border-right: 1px solid #eee;
+                vertical-align: middle;
+                &.active, &:hover {
+                    font-weight: bold;
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+:host ::ng-deep typeahead-container.dropdown-menu {
+    height: auto!important;
+    width: 100%;
+    border-radius: unset;
+    border: 0;
+    background: #fff;
+    .custom-list-group {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        .custom-list-group-item {
+            padding: .2rem .5rem .2rem 2rem;
+            margin-bottom: 0;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            color: #444;
+            &.active {
+                background: #f4f4f4;
+            }
+            div {
+                vertical-align: middle;
+            }
+            .company-section {
+                display: inline-block;
+                width: 80%;
+                span {
+                    display: block;
+                }
+                .company {
+                    font-size: .7rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+            .exchange-section {
+                display: inline-block;
+                width: 20%;
+                font-size: .8rem;
+            }
+        }
+    }
+}

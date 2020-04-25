@@ -1,0 +1,62 @@
+<div class="watchlist-container">
+    <app-loader [loading]="(loading || watchlistLoading || stockLoading)"></app-loader>
+    <div class="instrument-search">
+        <i class="fa fa-search search-icon" aria-hidden="true"></i>
+        <div class="search-input">
+            <input type="text" [(ngModel)]="searchInstrument" [typeahead]="searchDataSource"
+                [optionsListTemplate]="instrumentSearchTemplate" typeaheadOptionField="symbol"
+                (typeaheadOnSelect)="onSearchSelect($event)" placeholder="Search eg: infy, tcs, wipro"
+                autocomplete="off" class="search-input-field">
+        </div>
+    </div>
+    <div class="instrument-list">
+        <div class="instrument" [ngClass]="{'instrument-red': item.last_price<item.prev_price,'instrument-green': item.last_price>item.prev_price}" *ngFor="let item of activeWatchlistStocks">
+            <div class="info">
+                <span class="symbol">{{item.symbol}}</span>
+                <span class="price">
+                    <span class="change-per">{{item.change_per}}%</span>
+                    <i class="fa" [ngClass]="{'fa-chevron-down': item.last_price<item.prev_price,'fa-chevron-up': item.last_price>item.prev_price}" aria-hidden="true"></i>
+                    <span class="close-price">{{item.last_price}}</span>
+                </span>
+            </div>
+            <div class="action">
+                <button type="button" class="btn btn-primary btn-buy-sm">B</button>
+                <button type="button" class="btn btn-danger btn-sell-sm">S</button>
+                <a type="button" class="btn btn-danger btn-icon btn-chart" [routerLink]="['/analyzer/instrument', item.id]"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                <button type="button" class="btn btn-danger btn-icon" (click)="deleteStock(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <div class="empty-watchlist" *ngIf="activeWatchlistStocks.length===0">
+            <h4>Nothing here.</h4>
+            <p>Use the search bar at the top to add some stock</p>
+        </div>
+    </div>
+    <div class="watchlist-selector">
+        <ul class="list-flat">
+            <li (click)="loadWatchlist(1)" [ngClass]="{'active': activeWatchlist===1}"><span>1</span></li>
+            <li (click)="loadWatchlist(2)" [ngClass]="{'active': activeWatchlist===2}"><span>2</span></li>
+            <li (click)="loadWatchlist(3)" [ngClass]="{'active': activeWatchlist===3}"><span>3</span></li>
+            <li (click)="loadWatchlist(4)" [ngClass]="{'active': activeWatchlist===4}"><span>4</span></li>
+            <li (click)="loadWatchlist(5)" [ngClass]="{'active': activeWatchlist===5}"><span>5</span></li>
+        </ul>
+    </div>
+</div>
+
+
+<ng-template #instrumentSearchTemplate let-matches="matches" let-query="query" let-typeaheadTemplateMethods>
+    <ul class="custom-list-group" [class.dropdown-menu]="isBs3">
+        <li class="custom-list-group-item" *ngFor="let match of matches"
+            [class.active]="typeaheadTemplateMethods.isActive(match)"
+            (click)="typeaheadTemplateMethods.selectMatch(match, $event)"
+            (mouseenter)="typeaheadTemplateMethods.selectActive(match)">
+            <div class="company-section">
+                <span class="symbol">{{match.item.symbol}}</span>
+                <span class="company">{{match.item.company_name}}</span>
+            </div>
+            <div class="exchange-section">
+                <span class="exchange-tag"
+                    [ngClass]="{'blue': match.item.exchange_name==='BSE', 'red': match.item.exchange_name==='NSE'}">{{match.item.exchange_name}}</span>
+            </div>
+        </li>
+    </ul>
+</ng-template>
