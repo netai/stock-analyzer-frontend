@@ -1,0 +1,63 @@
+<app-loader [loading]="loading" [type]="'small'"></app-loader>
+<div class="modal-header" [ngClass]="{'sell-header': isBuyOrSell==='sell','buy-header': isBuyOrSell==='buy'}">
+  <div class="modal-title">
+    <div class="pull-left">
+      <div class="instrument-info">Buy {{stock.symbol}}<span> × 20 Qty<span> at ₹20</span></span></div>
+      <div class="instrument-price">₹{{stock.last_price}} on {{stock.exchange_name}}</div>
+    </div>
+  </div>
+</div>
+<form [formGroup]="oredrFrm" name="oredrFrm" (submit)="placeOrder()">
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="market"
+            value="market">
+          <label class="form-check-label" for="market">MARKET</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="limit"
+            value="limit">
+          <label class="form-check-label" for="limit">LIMIT</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="sl" value="sl">
+          <label class="form-check-label" for="sl">SL</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="slm"
+            value="slm">
+          <label class="form-check-label" for="slm">SL-M</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control" placeholder="Qty." formControlName="qty"
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.qty.errors }">
+        <label class="input-label">Qty.</label>
+      </div>
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control" placeholder="Price" formControlName="price"
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.price.errors }">
+        <label class="input-label">Price</label>
+      </div>
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control" placeholder="SL Price" formControlName="sl_price"
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.sl_price.errors }">
+        <label class="input-label">SL Price</label>
+      </div>
+    </div>
+    <div class="error">
+      <ul>
+        <li *ngFor="let message of errorMessage">{{message}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-sell" *ngIf="isBuyOrSell==='sell'">Sell</button>
+    <button type="submit" class="btn btn-buy" *ngIf="isBuyOrSell==='buy'">Buy</button>
+    <button type="button" class="btn btn-cancel" (click)="bsModalRef.hide()">Cancel</button>
+  </div>
+</form>

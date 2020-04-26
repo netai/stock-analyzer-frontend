@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule }    from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './shared/shared.module';
@@ -11,10 +10,9 @@ import { AuthService, ServerService } from './services'
 
 @NgModule({
   imports: [
-    SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
+    SharedModule,
     AppRoutingModule
   ],
   declarations: [

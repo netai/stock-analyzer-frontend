@@ -6,7 +6,7 @@ export interface WatchlistModel {
 export interface WatchlistStockModel {
     id: number;
     symbol: string,
-    excange_name: string;
+    exchange_name: string;
     prev_price: number;
     last_price: number;
     company_name: string;

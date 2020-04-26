@@ -3,8 +3,10 @@ import { isBs3 } from 'ngx-bootstrap/utils';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { Observable, of } from 'rxjs';
 import { mergeMap, delay } from 'rxjs/operators';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ServerService, StockService, WatchlistService } from '../../services'
-import { StockModel, WatchlistStockModel, WatchlistModel } from 'src/app/models';
+import { StockModel, WatchlistStockModel, WatchlistModel } from '../../../models';
+import { BuySellComponent } from '../../../shared/modal';
 
 @Component({
   selector: 'analyzer-watchlist',
@@ -24,11 +26,13 @@ export class WatchlistComponent implements OnInit {
   activeWatchlist: number = 1;
   activeWatchlistStocks: WatchlistStockModel[] = [];
   searchDataSource: Observable<any>;
+  bsModalRef: BsModalRef;
 
   constructor(
     private _ss: ServerService,
     private _stokServ: StockService,
-    private _ws: WatchlistService
+    private _ws: WatchlistService,
+    private _mmodser: BsModalService
   ) {
     this.searchDataSource = Observable.create((observer: any) => {
       observer.next(this.searchInstrument);
@@ -73,7 +77,6 @@ export class WatchlistComponent implements OnInit {
     );
   }
 
-  //need to check in auth server
   private _errorHandler(error: any): void {
     console.log(error);
     this.stockLoading = false;
@@ -132,6 +135,20 @@ export class WatchlistComponent implements OnInit {
       }
     }
     this.watchlistLoading = false;
+  }
+
+  public buySell(stock: WatchlistStockModel, isBuyOrSell: string): void {
+    const modalConfig = {
+      animated: true,
+      backdrop: false,
+      ignoreBackdropClick: true,
+      class: 'buy-sell-modal',
+      initialState: {
+        stock: stock,
+        isBuyOrSell: isBuyOrSell
+      }
+    };
+    this.bsModalRef = this._mmodser.show(BuySellComponent, modalConfig);
   }
 
 }

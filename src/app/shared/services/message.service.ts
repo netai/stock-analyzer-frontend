@@ -11,10 +11,12 @@ export class MessageService {
 
     public showMessage(): void {
         this.msgSubject.next(this.messages);
+        setTimeout(() => {
+            this.clearMessage();
+        }, 5000);
     }
 
     public addMessage(message: MessageModel): void {
-        console.log(this.msgSubject);
         this.messages.push(message);
     }
 
@@ -24,7 +26,7 @@ export class MessageService {
 
     public clearMessage(): void {
         this.messages = [];
-        this.msgSubject.next();
+        this.msgSubject.next(this.messages);
     }
 
     public clearSingleMessage(id: number): void {

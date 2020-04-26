@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AnalyzerRoutingModule } from './analyzer.routing';
 import { SharedModule } from '../shared/shared.module';
@@ -20,9 +20,9 @@ import { StockService, ServerService } from './services';
     imports: [
         SharedModule,
         AnalyzerRoutingModule,
-        FormsModule,
         TypeaheadModule.forRoot(),
-        BsDropdownModule.forRoot()
+        BsDropdownModule.forRoot(),
+        ModalModule.forRoot()
     ],
     declarations: [
         DashboardComponent,

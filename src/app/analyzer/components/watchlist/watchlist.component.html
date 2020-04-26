@@ -20,10 +20,10 @@
                 </span>
             </div>
             <div class="action">
-                <button type="button" class="btn btn-primary btn-buy-sm">B</button>
-                <button type="button" class="btn btn-danger btn-sell-sm">S</button>
-                <a type="button" class="btn btn-danger btn-icon btn-chart" [routerLink]="['/analyzer/instrument', item.id]"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
-                <button type="button" class="btn btn-danger btn-icon" (click)="deleteStock(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button type="button" (click)="buySell(item, 'buy')" class="btn btn-buy-sm">B</button>
+                <button type="button" (click)="buySell(item, 'sell')" class="btn btn-sell-sm">S</button>
+                <a type="button" class="btn btn-icon btn-chart" [routerLink]="['/analyzer/instrument', item.id]"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                <button type="button" class="btn btn-icon" (click)="deleteStock(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>
         </div>
         <div class="empty-watchlist" *ngIf="activeWatchlistStocks.length===0">

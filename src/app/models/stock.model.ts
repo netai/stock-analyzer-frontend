@@ -8,7 +8,8 @@ export interface StockModel {
     face_value: number;
     company_detail: string;
     comapany_website: string;
-    stock_report?: StockReport;
+    exchange_name: string;
+    stock_report?: StockReport[];
 }
 
 export interface StockReport {

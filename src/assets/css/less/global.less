@@ -2,7 +2,6 @@ html, body {
     min-height: 100%;
     background-color: #f3f3f3;
     letter-spacing: 0;
-    font-family: Open Sans,sans-serif;
     color: #444;
     font-size: 14px;
     line-height: 1.6;
@@ -40,39 +39,164 @@ html, body {
         min-height: 100vh;
         padding: 5rem 0 3.5rem 0;
     }
-    .list-flat {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+}
+.form-group {
+    position: relative;
+    .input-label {
+        display: block;
+        visibility: hidden;
+        z-index: 5;
+        position: absolute;
+        top: -8px;
+        background: #fff;
+        padding: 0 5px;
+        margin-left: 10px;
+        font-size: .8rem;
     }
-    .btn-buy-sm {
-        color: #fff;
-        background: #4184f3;
-        border-color: #4184f3;
-        padding: .2rem .7rem;
-    }
-    .btn-sell-sm {
-        color: #fff;
-        background: #ff5722;
-        border-color: #ff5722;
-        padding: .2rem .7rem;
-    }
-    .invalid-field {
-        border-color: #dc3545;
-    }
-    .valid-field {
-        border-color: #28a745;
-    }
-    .exchange-tag {
-        padding: 2px 6px;
-        margin-left: 5px;
-        &.blue {
-            color: #4184f3;
-            background-color: rgba(65,132,243,.1);
+    .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding: 10px 15px;
+        color: #4a4a4a;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 1.1rem;
+        &:not(:placeholder-shown), &:focus, &:disabled {
+            outline: 0;
+            border-color: #9b9b9b;
+            box-shadow: none;
+            &::placeholder {
+                color: transparent;
+            }
+            & + .input-label {
+                visibility: visible;
+            }
         }
-        &.red {
-            color: #df514c;
-            background-color: rgba(223,81,76,.1);
+        &:disabled {
+            background-color: #fff;
+            color: #ccc;
+            cursor: not-allowed;
+            border-color: transparent;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat;
+        }
+        &:disabled + .input-label {
+            color: #ccc;
         }
     }
+    .form-check {
+        &.form-check-inline {
+            margin-right: 20px;
+        }
+        .form-check-input {
+            opacity: 0;
+            position: absolute;
+            &:checked + .form-check-label:before {
+                background: #4184f3;
+                -webkit-box-shadow: inset 0 0 0 2px #fff;
+                box-shadow: inset 0 0 0 2px #fff;
+                border: 1px solid #4184f3;
+                padding: .47rem;
+            }
+            &:focus + .form-check-label{
+                border-bottom: 1px solid #e0e0e0;
+            }
+        }
+        .form-check-label {
+            color: #444;
+            position: relative;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            &::before {
+                content: "";
+                background: #fff;
+                border: 2px solid #9b9b9b;
+                display: inline-block;
+                vertical-align: middle;
+                padding: .4rem;
+                margin: -1px 5px 0 0;
+                text-align: center;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+.list-flat {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.btn-buy {
+    color: #fff;
+    background: #4184f3;
+    border-color: #4184f3;
+    padding: 8px 20px;
+    font-size: 1rem;
+    &:hover {
+        opacity: .8;
+        color: #fff;
+    }
+}
+.btn-sell {
+    color: #fff;
+    background: #ff5722;
+    border-color: #ff5722;
+    padding: 8px 20px;
+    font-size: 1rem;
+    &:hover {
+        opacity: .8;
+        color: #fff;
+    }
+}
+.btn-cancel {
+    background: #fff;
+    border-color: #9b9b9b;
+    color: #444;
+    padding: 8px 20px;
+    font-size: 1rem;
+    &:hover {
+        background: #9b9b9b;
+        color: #fff;
+    }
+}
+.btn-buy-sm {
+    color: #fff;
+    background: #4184f3;
+    border-color: #4184f3;
+    padding: .2rem .7rem;
+    &:hover {
+        opacity: .9;
+        color: #fff;
+    }
+}
+.btn-sell-sm {
+    color: #fff;
+    background: #ff5722;
+    border-color: #ff5722;
+    padding: .2rem .7rem;
+    &:hover {
+        opacity: .9;
+        color: #fff;
+    }
+}
+.invalid-field {
+    border-color: #dc3545!important;
+}
+.valid-field {
+    border-color: #28a745;
+}
+.exchange-tag {
+    padding: 2px 6px;
+    margin-left: 5px;
+    &.blue {
+        color: #4184f3;
+        background-color: rgba(65,132,243,.1);
+    }
+    &.red {
+        color: #df514c;
+        background-color: rgba(223,81,76,.1);
+    }
+}
+.modal-dialog {
+    margin-top: 7rem;
 }
