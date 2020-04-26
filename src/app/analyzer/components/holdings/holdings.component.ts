@@ -2,7 +2,8 @@ import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'analyzer-holdings',
-  templateUrl: 'holdings.component.html'
+  templateUrl: 'holdings.component.html',
+  styleUrls: ['holdings.component.less']
 })
 
 export class HoldingsComponent implements OnInit{

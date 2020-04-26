@@ -91,33 +91,54 @@ html, body {
         .form-check-input {
             opacity: 0;
             position: absolute;
-            &:checked + .form-check-label:before {
+            &[type=radio]:checked + .form-check-label:before {
                 background: #4184f3;
                 -webkit-box-shadow: inset 0 0 0 2px #fff;
                 box-shadow: inset 0 0 0 2px #fff;
                 border: 1px solid #4184f3;
                 padding: .47rem;
             }
-            &:focus + .form-check-label{
+            &[type=radio]:focus + .form-check-label{
                 border-bottom: 1px solid #e0e0e0;
+            }
+            &[type=radio] + .form-check-label {
+                border-bottom: 1px solid transparent;
+                &::before {
+                    content: "";
+                    background: #fff;
+                    border: 2px solid #9b9b9b;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: .4rem;
+                    margin: -1px 5px 0 0;
+                    text-align: center;
+                    border-radius: 50%;
+                }
+            }
+            &[type=checkbox] + .form-check-label{
+                &:before {
+                    content: "";
+                    background-color: #fff;
+                    border: 2px solid #9b9b9b;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: .4rem;
+                    margin: -1px 5px 0 0;
+                    text-align: center;
+                }
+            }
+            &[type=checkbox]:checked + .form-check-label:before {
+                background: #4184f3;
+                -webkit-box-shadow: inset 0 0 0 2px #fff;
+                box-shadow: inset 0 0 0 2px #fff;
+                border: 1px solid #4184f3;
+                padding: .47rem;
             }
         }
         .form-check-label {
             color: #444;
             position: relative;
             cursor: pointer;
-            border-bottom: 1px solid transparent;
-            &::before {
-                content: "";
-                background: #fff;
-                border: 2px solid #9b9b9b;
-                display: inline-block;
-                vertical-align: middle;
-                padding: .4rem;
-                margin: -1px 5px 0 0;
-                text-align: center;
-                border-radius: 50%;
-            }
         }
     }
 }
@@ -199,4 +220,20 @@ html, body {
 }
 .modal-dialog {
     margin-top: 7rem;
+}
+.page-title {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    color: #4a4a4a;
+    border-bottom: 1px solid #f1f1f1;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+.red {
+    color: #df514c;
+}
+.green {
+    color: #4caf50;
 }

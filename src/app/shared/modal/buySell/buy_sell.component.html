@@ -2,7 +2,7 @@
 <div class="modal-header" [ngClass]="{'sell-header': isBuyOrSell==='sell','buy-header': isBuyOrSell==='buy'}">
   <div class="modal-title">
     <div class="pull-left">
-      <div class="instrument-info">Buy {{stock.symbol}}<span> × 20 Qty<span> at ₹20</span></span></div>
+      <div class="instrument-info">Buy {{stock.symbol}}<span *ngIf="oredrFrm.get('qty').value"> × {{oredrFrm.get('qty').value}} Qty<span *ngIf="oredrFrm.get('price').value"> at ₹{{oredrFrm.get('price').value}}</span></span></div>
       <div class="instrument-price">₹{{stock.last_price}} on {{stock.exchange_name}}</div>
     </div>
   </div>
@@ -35,17 +35,17 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <input type="text" class="form-control" placeholder="Qty." formControlName="qty"
-          [ngClass]="{ 'invalid-field': isSubmitted && formControls.qty.errors }">
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.qty.errors }"  pattern="^[0-9]*$">
         <label class="input-label">Qty.</label>
       </div>
       <div class="form-group col-md-4">
         <input type="text" class="form-control" placeholder="Price" formControlName="price"
-          [ngClass]="{ 'invalid-field': isSubmitted && formControls.price.errors }">
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.price.errors }" pattern="^([1-9]\d*|0)(\.\d+)?$">
         <label class="input-label">Price</label>
       </div>
       <div class="form-group col-md-4">
         <input type="text" class="form-control" placeholder="SL Price" formControlName="sl_price"
-          [ngClass]="{ 'invalid-field': isSubmitted && formControls.sl_price.errors }">
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.sl_price.errors }" pattern="^([1-9]\d*|0)(\.\d+)?$">
         <label class="input-label">SL Price</label>
       </div>
     </div>

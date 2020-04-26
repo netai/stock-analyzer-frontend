@@ -40,7 +40,7 @@ export class BuySellComponent implements OnInit {
     this.isSubmitted = true;
     this.loading = true;
     if (this.oredrFrm.valid && this._isValidateValue()) {
-      this._ms.addMessage({ message: 'Your order has been placed successfully', title: 'Successfull', type: 'success' });
+      this._ms.addMessage({ message: 'Your order has been placed successfully, check orderbook for status', title: 'Successfull', type: 'success' });
       this._ms.showMessage();
       this.bsModalRef.hide();
     } else {

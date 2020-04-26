@@ -1,2 +1,105 @@
-Orders
 <app-message position="top-right"></app-message>
+<div class="analyzer-order-page">
+    <div class="open-order">
+        <h4 class="page-title">Open Orders(3)</h4>
+        <div class="col-md-12 table-responsive">
+            <table class="table orderbook-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1"></label>
+                                </div>
+                            </div>
+                        </th>
+                        <th>Time</th>
+                        <th>Type</th>
+                        <th>Instrument</th>
+                        <th>Qty.</th>
+                        <th>LTP</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1"></label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>15:44:56</td>
+                        <td><span class="order-type buy">BUY</span></td>
+                        <td>TCS<span class="exchange-name">NSE</span></td>
+                        <td>100</td>
+                        <td>140.5</td>
+                        <td>100.5</td>
+                        <td><span class="status">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1"></label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>15:44:56</td>
+                        <td><span class="order-type sell">SELL</span></td>
+                        <td>TCS<span class="exchange-name">NSE</span></td>
+                        <td>100</td>
+                        <td>140.5</td>
+                        <td>100.5</td>
+                        <td><span class="status">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8">
+                            <button class="btn btn-primary">Cancel Order</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="executed-order">
+        <h4 class="page-title">Executed Orders(3)</h4>
+        <div class="col-md-12 .table-responsive">
+            <table class="table orderbook-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Type</th>
+                        <th>Instrument</th>
+                        <th>Qty.</th>
+                        <th>Avg Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15:44:56</td>
+                        <td><span class="order-type buy">BUY</span></td>
+                        <td>TCS<span class="exchange-name">NSE</span></td>
+                        <td>100</td>
+                        <td>100.5</td>
+                        <td><span class="status">CANCELLED</span></td>
+                    </tr>
+                    <tr>
+                        <td>15:44:56</td>
+                        <td><span class="order-type sell">SELL</span></td>
+                        <td>TCS<span class="exchange-name">NSE</span></td>
+                        <td>100</td>
+                        <td>100.5</td>
+                        <td><span class="status">CANCELLED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
