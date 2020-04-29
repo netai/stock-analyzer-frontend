@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AnalyzerRoutingModule } from './analyzer.routing';
@@ -15,13 +14,13 @@ import {
     InstrumentComponent
 } from './components';
 import { StockService, ServerService } from './services';
+import { BuySellComponent } from './modal';
 
 @NgModule({
     imports: [
         SharedModule,
         AnalyzerRoutingModule,
         TypeaheadModule.forRoot(),
-        BsDropdownModule.forRoot(),
         ModalModule.forRoot()
     ],
     declarations: [
@@ -31,7 +30,11 @@ import { StockService, ServerService } from './services';
         FundsComponent,
         HoldingsComponent,
         OrdersComponent,
-        InstrumentComponent
+        InstrumentComponent,
+        BuySellComponent
+    ],
+    entryComponents: [
+        BuySellComponent
     ],
     providers: [
         StockService,

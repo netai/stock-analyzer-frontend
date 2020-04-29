@@ -20,8 +20,8 @@
                 </span>
             </div>
             <div class="action">
-                <button type="button" (click)="buySell(item, 'buy')" class="btn btn-buy-sm">B</button>
-                <button type="button" (click)="buySell(item, 'sell')" class="btn btn-sell-sm">S</button>
+                <button type="button" (click)="buySell(item, false)" class="btn btn-buy-sm">B</button>
+                <button type="button" (click)="buySell(item, true)" class="btn btn-sell-sm">S</button>
                 <a type="button" class="btn btn-icon btn-chart" [routerLink]="['/analyzer/instrument', item.id]"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
                 <button type="button" class="btn btn-icon" (click)="deleteStock(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>

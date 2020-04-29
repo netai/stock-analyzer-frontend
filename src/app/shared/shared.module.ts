@@ -8,8 +8,7 @@ import {
     LoaderComponent,
     MessageComponent
 } from './components';
-import { MessageService } from './services';
-import { BuySellComponent } from './modal';
+import { MessageService, ErrorService } from './services';
 
 @NgModule({
     imports: [
@@ -22,15 +21,13 @@ import { BuySellComponent } from './modal';
         HeaderComponent,
         FooterComponent,
         LoaderComponent,
-        MessageComponent,
-        BuySellComponent
+        MessageComponent
     ],
     providers: [
-        MessageService
+        MessageService,
+        ErrorService
     ],
-    entryComponents: [
-        BuySellComponent
-    ],
+    entryComponents: [],
     exports: [
         CommonModule,
         FormsModule,

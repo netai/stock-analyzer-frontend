@@ -22,14 +22,14 @@
                 </ul>
             </div>
             <div class="right-nav">
-                <div class="user-nav" dropdown>
-                    <label class="user-name dropdown-toggle" dropdownToggle aria-controls="dropdown-alignment">
+                <div class="user-nav css-dropdown">
+                    <label class="user-name css-dropdown-btn">
                         <i class="fa fa-user" aria-hidden="true"></i>Netai Nayek
                     </label>
-                    <ul *dropdownMenu class="user-dropdown dropdown-menu dropdown-menu-right">
-                        <li role="menuitem"><a class="dropdown-item" routerLink="/analyzer/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-                        <li class="divider dropdown-divider"></li>
-                        <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                    <ul class="css-dropdown-content">
+                        <li><a routerLink="/analyzer/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                        <li></li>
+                        <li><a href="#" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                     </ul>
                 </div>
             </div>

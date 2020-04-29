@@ -22,6 +22,9 @@ html, body {
             font-size: 2rem;
             font-weight: bold;
         }
+        .navbar {
+            line-height: 2.5rem;
+        }
     }
     .footer {
         position: absolute;
@@ -37,7 +40,7 @@ html, body {
         max-width: 1366px;
         display: flex;
         min-height: 100vh;
-        padding: 5rem 0 3.5rem 0;
+        padding: 4rem 0 3.5rem 0;
     }
 }
 .form-group {
@@ -236,4 +239,52 @@ html, body {
 }
 .green {
     color: #4caf50;
+}
+.table {
+    tr:hover {
+        td {
+            background-color: #f7f7f7;
+        }
+    }
+}
+.css-dropdown {
+    position: relative;
+    display: inline-block;
+    .css-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 10rem;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        right: 0;
+        border: 1px solid #eee;
+        padding: .5rem 0;
+        line-height: 1.5rem;
+        a {
+            padding: .5rem 1rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: #9b9b9b;
+            cursor: pointer;
+            i {
+                margin-right: .5rem;
+            }
+            &:hover {
+                background-color: #f4f4f4;
+                color: #000;
+            }
+        }
+    }
+    &:hover .css-dropdown-content {
+        display: block;
+    }
+    &:hover .css-dropdown-btn {
+        color: #000;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+    }
 }

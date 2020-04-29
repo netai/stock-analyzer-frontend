@@ -16,7 +16,7 @@ export class ServerService {
     constructor(private _http: HttpClient) {
         this.httpOptions.headers = new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('AUTH_TOKEN')?localStorage.getItem('AUTH_TOKEN'):'none'
+            'Authorization': localStorage.getItem('AUTH_TOKEN') ? localStorage.getItem('AUTH_TOKEN') : 'none'
         });
     }
 
@@ -57,7 +57,43 @@ export class ServerService {
     }
 
     public deleteWatchlistStock(postData: any): Observable<any> {
-        return this._http.delete(AppConfig.API_BASE_URL+AppConfig.API_SERVICE.WATCHLIST+'/'+postData.watchlist_no+'/stock/'+postData.stock_id, this.httpOptions)
+        return this._http.delete(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.WATCHLIST + '/' + postData.watchlist_no + '/stock/' + postData.stock_id, this.httpOptions)
+            .pipe(
+                tap((response: Response) => {
+                    return response;
+                }),
+                catchError((serverError: Response) => {
+                    return throwError(serverError)
+                })
+            );
+    }
+
+    public submitOrder(postData: any): Observable<any> {
+        return this._http.post(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.ORDER, postData, this.httpOptions)
+            .pipe(
+                tap((response: Response) => {
+                    return response;
+                }),
+                catchError((serverError: Response) => {
+                    return throwError(serverError)
+                })
+            );
+    }
+
+    public getOrderList(): Observable<any> {
+        return this._http.get(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.ORDER, this.httpOptions)
+            .pipe(
+                tap((response: Response) => {
+                    return response;
+                }),
+                catchError((serverError: Response) => {
+                    return throwError(serverError)
+                })
+            );
+    }
+
+    public cancelOrder(postData: any): Observable<any> {
+        return this._http.delete(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.ORDER + '/' + postData.id , this.httpOptions)
             .pipe(
                 tap((response: Response) => {
                     return response;

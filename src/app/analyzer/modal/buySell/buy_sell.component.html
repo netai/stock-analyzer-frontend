@@ -1,5 +1,5 @@
 <app-loader [loading]="loading" [type]="'small'"></app-loader>
-<div class="modal-header" [ngClass]="{'sell-header': isBuyOrSell==='sell','buy-header': isBuyOrSell==='buy'}">
+<div class="modal-header" [ngClass]="{'sell-header': is_sell,'buy-header': !is_sell}">
   <div class="modal-title">
     <div class="pull-left">
       <div class="instrument-info">Buy {{stock.symbol}}<span *ngIf="oredrFrm.get('qty').value"> × {{oredrFrm.get('qty').value}} Qty<span *ngIf="oredrFrm.get('price').value"> at ₹{{oredrFrm.get('price').value}}</span></span></div>
@@ -12,21 +12,21 @@
     <div class="form-row">
       <div class="form-group col-md-12">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="market"
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="market"
             value="market">
           <label class="form-check-label" for="market">MARKET</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="limit"
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="limit"
             value="limit">
           <label class="form-check-label" for="limit">LIMIT</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="sl" value="sl">
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="sl" value="sl">
           <label class="form-check-label" for="sl">SL</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="orderType" (change)="selectOrderType()" formControlName="orderType" id="slm"
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="slm"
             value="slm">
           <label class="form-check-label" for="slm">SL-M</label>
         </div>
@@ -56,8 +56,8 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-sell" *ngIf="isBuyOrSell==='sell'">Sell</button>
-    <button type="submit" class="btn btn-buy" *ngIf="isBuyOrSell==='buy'">Buy</button>
+    <button type="submit" class="btn btn-sell" *ngIf="is_sell">Sell</button>
+    <button type="submit" class="btn btn-buy" *ngIf="!is_sell">Buy</button>
     <button type="button" class="btn btn-cancel" (click)="bsModalRef.hide()">Cancel</button>
   </div>
 </form>

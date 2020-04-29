@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MessageService } from '../../services';
-import { MessageModel } from 'src/app/models';
+import { MessageModel } from '../../../models';
 import { Subscription } from 'rxjs';
 
 @Component({

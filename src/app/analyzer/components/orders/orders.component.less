@@ -6,6 +6,9 @@
                 color: #9b9b9b;
                 font-weight: 400;
             }
+            &:hover .order-menu {
+                display: block;
+            }
         }
         .form-group {
             margin: 0;
@@ -38,9 +41,29 @@
             background: rgba(68,68,68,.1);
             padding: .1rem .5rem;
             font-size: .9rem;
+            &.completed {
+                color: #4184f3;
+            }
         }
     }
-    .open-order {
+    .open-order, .executed-order {
         margin-bottom: 3rem;
+    }
+    .order-menu {
+        float: right;
+        display: none;
+        &:hover .css-dropdown-btn {
+            color: #000;
+            border: 1px solid #000;
+        }
+        .css-dropdown-btn {
+            cursor: pointer;
+            color: #9b9b9b;
+            padding: 0 .5rem;
+            border: 1px solid #9b9b9b;
+        }
+        .css-dropdown-content {
+            top: 17px;
+        }
     }
 }

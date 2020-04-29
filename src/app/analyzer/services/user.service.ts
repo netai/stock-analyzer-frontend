@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { UserModel } from '../models';
+import { UserModel } from '../../models';
 import { ServerService } from './server.service';
 
 @Injectable()

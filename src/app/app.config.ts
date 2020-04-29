@@ -6,6 +6,7 @@ export class AppConfig {
         LOGIN: '/login',
         USER: '/user',
         STOCK: '/stock',
-        WATCHLIST: '/watchlist'
+        WATCHLIST: '/watchlist',
+        ORDER: '/order'
     }
 }

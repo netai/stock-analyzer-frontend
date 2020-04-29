@@ -28,7 +28,7 @@
             text-align: right;
             color: #9b9b9b;
             .navbar-nav {
-                width: 45%;
+                width: 48%;
                 margin-left: auto;
                 .nav-item {
                     .nav-link {
@@ -51,36 +51,19 @@
             width: 15%;
             display: inline-block;
             text-align: right;
-            .user-name {
-                cursor: pointer;
-                color: #9b9b9b;
-                margin: 0;
-                line-height: 2rem;
-                i {
-                    font-size: 1.5rem;
-                    vertical-align: middle;
-                    margin-right: .5rem;
-                }
-                &:hover {
+            .user-nav {
+                &:hover .user-name {
                     color: #000;
                 }
-                &:after {
-                    content: none;
-                }
-            }
-            .user-dropdown {
-                border-radius: 0;
-                right: 10px;
-                li {
-                    a {
-                        color: #9b9b9b;
-                        i {
-                            margin-right: .5rem;
-                        }
-                    }
-                    a:hover {
-                        background-color: #f4f4f4;
-                        color: #000;
+                .user-name {
+                    cursor: pointer;
+                    color: #9b9b9b;
+                    margin: 0;
+                    line-height: 2rem;
+                    i {
+                        font-size: 1.5rem;
+                        vertical-align: middle;
+                        margin-right: .5rem;
                     }
                 }
             }

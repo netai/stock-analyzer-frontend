@@ -13,7 +13,7 @@ export class MessageService {
         this.msgSubject.next(this.messages);
         setTimeout(() => {
             this.clearMessage();
-        }, 5000);
+        }, 10000);
     }
 
     public addMessage(message: MessageModel): void {
