@@ -7,6 +7,7 @@ export class AppConfig {
         USER: '/user',
         STOCK: '/stock',
         WATCHLIST: '/watchlist',
-        ORDER: '/order'
+        ORDER: '/order',
+        HOLDING: '/holding'
     }
 }

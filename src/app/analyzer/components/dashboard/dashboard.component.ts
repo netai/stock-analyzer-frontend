@@ -12,9 +12,11 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(){}
 
+  count = 1;
   public showMessage() {
-    this._ms.addMessage({message: 'Message from app Component to message Component!', title: 'Information', type: 'success'});
+    this._ms.addMessage({message: 'Message from app Component to message Component! - '+this.count, title: 'Information', type: 'success'});
     this._ms.showMessage();
+    this.count++;
   }
 
 }

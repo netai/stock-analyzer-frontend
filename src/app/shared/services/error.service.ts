@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from '.';
+import { MessageService } from './message.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services';
 

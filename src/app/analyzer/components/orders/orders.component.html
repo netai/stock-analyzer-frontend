@@ -74,4 +74,8 @@
             </table>
         </div>
     </div>
+    <div class="empty-order" *ngIf="openOrderList.length===0 && executedOrderList.length===0">
+        <h4>No pending orders.</h4>
+        <p>Place an order from your watchlist</p>
+    </div>
 </div>

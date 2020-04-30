@@ -11,9 +11,11 @@ export class MessageService {
 
     public showMessage(): void {
         this.msgSubject.next(this.messages);
-        setTimeout(() => {
-            this.clearMessage();
-        }, 10000);
+        for(let i=0;i<this.messages.length;i++) {
+            setTimeout(() => {
+                this.clearSingleMessage(i);
+            }, 10000);
+        }
     }
 
     public addMessage(message: MessageModel): void {

@@ -104,4 +104,28 @@ export class ServerService {
             );
     }
 
+    public executeOrder(): Observable<any> {
+        return this._http.get(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.ORDER+'/execute', this.httpOptions)
+            .pipe(
+                tap((response: Response) => {
+                    return response;
+                }),
+                catchError((serverError: Response) => {
+                    return throwError(serverError)
+                })
+            );
+    }
+
+    public getHoldingList(): Observable<any> {
+        return this._http.get(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.HOLDING, this.httpOptions)
+            .pipe(
+                tap((response: Response) => {
+                    return response;
+                }),
+                catchError((serverError: Response) => {
+                    return throwError(serverError)
+                })
+            );
+    }
+
 }

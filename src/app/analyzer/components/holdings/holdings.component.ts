@@ -1,4 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ServerService, HoldingService } from '../../services';
+import { MessageService, ErrorService } from '../../../shared/services';
+import { HoldingModel } from '../../../models';
 
 @Component({
   selector: 'analyzer-holdings',
@@ -6,10 +9,64 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['holdings.component.less']
 })
 
-export class HoldingsComponent implements OnInit{
+export class HoldingsComponent implements OnInit {
 
-  constructor(){}
+  holdingList: HoldingModel[] = [];
+  loading: boolean = true;
+  totalCurrentValue: number = 0;
+  totalInvValue: number = 0;
 
-  ngOnInit(){}
+  constructor(
+    private _ss: ServerService,
+    private _ms: MessageService,
+    private _hs: HoldingService,
+    private _es: ErrorService
+  ) { }
+
+  ngOnInit() {
+    this._loadHoldingList()
+  }
+
+  private _loadHoldingList(): void {
+    this.loading = true;
+    this._ss.getHoldingList()
+      .subscribe(
+        holdingList => {
+          if (holdingList.status === 'success') {
+            this._hs.setHoldingList(holdingList.data.holding);
+            this.holdingList = this._hs.getHoldingList();
+            this._calculateTotalPrice(this.holdingList)
+          } else {
+            this._ms.addMessage({ message: holdingList.message, title: 'Error', type: 'error' });
+            this._ms.showMessage();
+          }
+          this.loading = false;
+        },
+        error => {
+          this._errorHandler(error);
+        }
+      );
+  }
+
+  private _calculateTotalPrice(holdingList: HoldingModel[]): void {
+    this.totalCurrentValue = 0;
+    this.totalInvValue = 0;
+    for(let i=0;i<holdingList.length;i++) {
+      this.totalCurrentValue += holdingList[i].cur_value;
+      this.totalInvValue += holdingList[i].inv_amount;;
+    }
+  }
+
+  public formatNumber(numberData: number): string {
+    let formatedNumber: string;
+    formatedNumber = numberData.toFixed(2);
+    formatedNumber = parseFloat(formatedNumber)>0?"+"+formatedNumber:formatedNumber;
+    return formatedNumber;
+  }
+
+  private _errorHandler(error: any): void {
+    this._es.errorHandler(error);
+    this.loading = false;
+  }
 
 }

@@ -1,7 +1,8 @@
 <app-message position="top-right"></app-message>
+<app-loader [loading]="loading"></app-loader>
 <div class="analyzer-holding-page">
-    <div class="holding">
-        <h4 class="page-title">Holdings(3)</h4>
+    <div class="holding" *ngIf="holdingList.length>0">
+        <h4 class="page-title">Holdings({{holdingList.length}})</h4>
         <div class="col-md-12 table-responsive">
             <table class="table holding-table">
                 <thead>
@@ -18,42 +19,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>TCS<span class="exchange-name">NSE</span></td>
-                        <td>100</td>
-                        <td>140.5</td>
-                        <td>140.5</td>
-                        <td>30000</td>
-                        <td>20000</td>
-                        <td class="red">-10000</td>
-                        <td class="red">-30.5%</td>
-                        <td class="green">1.5%</td>
-                    </tr>
-                    <tr>
-                        <td>TCS<span class="exchange-name">NSE</span></td>
-                        <td>100</td>
-                        <td>140.5</td>
-                        <td>140.5</td>
-                        <td>30000</td>
-                        <td>20000</td>
-                        <td class="red">-10000</td>
-                        <td class="red">-30.5%</td>
-                        <td class="green">1.5%</td>
+                    <tr *ngFor="let row of holdingList">
+                        <td>{{row.stock.symbol}}<span class="exchange-name">{{row.stock.exchange_name}}</span></td>
+                        <td>{{row.qty}}</td>
+                        <td>{{row.avg_price}}</td>
+                        <td>{{row.stock.last_price}}</td>
+                        <td>{{row.inv_amount}}</td>
+                        <td>{{row.cur_value}}</td>
+                        <td [ngClass]="{'red':row.inv_amount>row.cur_value,'green': row.cur_value>row.inv_amount}">
+                            {{row.pl_value}}</td>
+                        <td [ngClass]="{'red':row.inv_amount>row.cur_value,'green': row.cur_value>row.inv_amount}">
+                            {{row.net_change}}%</td>
+                        <td [ngClass]="{'red':row.stock.prev_price>row.stock.last_price,'green': row.stock.prev_price<row.stock.last_price}">
+                            {{row.stock.per_change}}%</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="row total-report">
             <div class="col-md-4">
-                <h2 class="report-value">30,000</h2>
+                <h2 class="report-value">{{totalInvValue | number}}</h2>
                 <div class="report-label">Total Investment</div>
             </div>
             <div class="col-md-4">
-                <h2 class="report-value">20,000</h2>
+                <h2 class="report-value">{{totalCurrentValue | number}}</h2>
                 <div class="report-label">Current Value</div>
             </div>
             <div class="col-md-4">
-                <h2 class="report-value red">-10,000<span>(-30.5%)</span></h2>
+                <h2 class="report-value"
+                    [ngClass]="{'red':totalInvValue>totalCurrentValue,'green': totalCurrentValue>totalInvValue}">
+                    {{formatNumber(totalCurrentValue-totalInvValue)}}<span>({{formatNumber(((totalCurrentValue-totalInvValue)/totalInvValue)*100)}}%)</span>
+                </h2>
                 <div class="report-label">Profit and Loss</div>
             </div>
         </div>

@@ -8,7 +8,7 @@ export interface OrderModel {
     qty: number;
     sl_price: number;
     status: string;
-    stock: OrderStockModel
+    stock: OrderStockModel;
 }
 
 export interface OrderStockModel {
