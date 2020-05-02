@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { AnalyzerRoutingModule } from './analyzer.routing';
 import { SharedModule } from '../shared/shared.module';
 import { AnalyzerComponent } from './analyzer.component';
@@ -21,7 +21,8 @@ import { BuySellComponent } from './modal';
         SharedModule,
         AnalyzerRoutingModule,
         TypeaheadModule.forRoot(),
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        PaginationModule.forRoot()
     ],
     declarations: [
         DashboardComponent,

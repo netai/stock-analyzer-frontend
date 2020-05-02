@@ -16,6 +16,7 @@ export class BuySellComponent implements OnInit {
   stock: WatchlistStockModel;
   is_sell: boolean;
   oredrFrm: FormGroup;
+  qty: number;
   isSubmitted: boolean = false;
   errorMessage: string[] = [];
   loading: boolean = false;
@@ -31,7 +32,7 @@ export class BuySellComponent implements OnInit {
 
   ngOnInit() {
     this.oredrFrm = this._fb.group({
-      qty: [1, Validators.required],
+      qty: [(this.qty?this.qty:1), Validators.required],
       price: [{ value: this.stock.last_price, disabled: true }, Validators.required],
       sl_price: [{ value: 0, disabled: true }, Validators.required],
       order_type: ['market', Validators.required],

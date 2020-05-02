@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="signup-page container main-container bg-white">
+    <app-loader [loading]="loading"></app-loader>
+    <div class="signup-box w-100" *ngIf="!loading">
+        <h3 class="text-center mb-5 box-heading">Sign Up</h3>
+        <div class="alert alert-danger" role="alert" *ngIf="messages.length>0">
+            <div *ngFor="let message of messages">{{message}}</div>
+        </div>
+        <div class="success-section" *ngIf="isSignupSuccess">
+            <div class="success-check green">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+            <div class="success-message">
+                You have successfully registered. Please <a href="#/login">Login</a>
+            </div>
+        </div>
+        <form *ngIf="!isSignupSuccess" [formGroup]="signupForm" name="signupForm" (submit)="signup()">
+            <div class="form-group">
+                <input type="name" class="form-control form-control-lg" formControlName="name" placeholder="Name"
+                    [ngClass]="{ 'invalid-field': isSubmitted && formControls.name.errors }">
+                <label class="input-label">Name</label>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control form-control-lg" formControlName="email" placeholder="Email"
+                    [ngClass]="{ 'invalid-field': isSubmitted && formControls.email.errors }">
+                <label class="input-label">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-control-lg" formControlName="password"
+                    placeholder="Password" [ngClass]="{ 'invalid-field': isSubmitted && formControls.password.errors }">
+                <label class="input-label">Password</label>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-control-lg" formControlName="cpassword"
+                    placeholder="Confirm Password"
+                    [ngClass]="{ 'invalid-field': isSubmitted && (formControls.password.errors || (formControls.cpassword.value !==  formControls.password.value))}">
+                <label class="input-label">Confirm Password</label>
+            </div>
+            <div class="text-center signup-btn">
+                <button type="submit" class="btn btn-primary btn-lg">Signup</button>
+            </div>
+            <div class="signup-options">
+                <span>Already have an account? <a href="#/login">Login</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

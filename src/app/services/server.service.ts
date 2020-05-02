@@ -44,4 +44,16 @@ export class ServerService {
             );
     }
 
+    public signupUser(postData: any): Observable<any> {
+        return this._http.post(AppConfig.API_BASE_URL + AppConfig.API_SERVICE.USER, postData, this.httpOptions)
+            .pipe(
+                tap((response: Response) => {
+                    return response;
+                }),
+                catchError((serverError: Response) => {
+                    return throwError(serverError)
+                })
+            );
+    }
+
 }

@@ -35,13 +35,13 @@ export class AuthService {
     return this._loggedIn;
   }
 
-  public logout() {
+  public logout(): void {
     this._loggedIn = false;
     localStorage.removeItem('AUTH_TOKEN');
     localStorage.removeItem('USER_ID');
   }
 
-  public setRedirectUrl(url: string) {
+  public setRedirectUrl(url: string): void {
     this._redirectUrl = url;
   }
 

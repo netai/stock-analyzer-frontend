@@ -1,0 +1,53 @@
+.instrument-page {
+    padding: 2rem;
+    .instrument-header {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        color: #4a4a4a;
+        border-bottom: 1px solid #f1f1f1;
+        h4 {
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+        .symbol {
+            display: inline-block;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            .exchange-name {
+                padding: .1rem .5rem;
+                font-size: .7rem;
+                margin-left: .5rem;
+                background-color: #ebebeb;
+            }
+        }
+        .price {
+            display: inline-block;
+            font-size: 1.1rem;
+            span {
+                margin-left: .5rem;
+                font-size: 1rem;
+                &.change-per {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    .instrument-price {
+        margin-bottom: 6rem;
+        .price-table {
+            tr {
+                th {
+                    color: #9b9b9b;
+                    font-weight: 400;
+                }
+                &:hover {
+                    td {
+                        background-color: #ebebeb;
+                    }
+                }
+            }
+        }
+    }
+}

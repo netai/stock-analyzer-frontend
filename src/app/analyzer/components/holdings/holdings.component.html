@@ -3,16 +3,17 @@
 <div class="analyzer-holding-page">
     <div class="holding" *ngIf="holdingList.length>0">
         <h4 class="page-title">Holdings({{holdingList.length}})</h4>
-        <div class="col-md-12 table-responsive">
+        <div class="col-md-12">
             <table class="table holding-table">
                 <thead>
                     <tr>
-                        <th>Instrument</th>
+                        <th width="22%">Instrument</th>
+                        <th>Type</th>
                         <th>Qty.</th>
-                        <th>Avg Price</th>
+                        <th>Avg. Price</th>
                         <th>LTP</th>
                         <th>Total Inv.</th>
-                        <th>Current Value</th>
+                        <th>Cur. Value</th>
                         <th>P&L</th>
                         <th>Net Chg.</th>
                         <th>Day Chg.</th>
@@ -20,17 +21,28 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let row of holdingList">
-                        <td>{{row.stock.symbol}}<span class="exchange-name">{{row.stock.exchange_name}}</span></td>
+                        <td>
+                            {{row.stock.symbol}}<span class="exchange-name">{{row.stock.exchange_name}}</span>
+                            <div class="css-dropdown holding-menu">
+                                <i class="fa fa-ellipsis-h css-dropdown-btn" aria-hidden="true"></i>
+                                <div class="css-dropdown-content">
+                                    <a (click)="buySell(row)"><i class="fa fa-stop" aria-hidden="true"></i>Exit</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="holding-type buy" *ngIf="!row.is_sell">BUY</span><span class="holding-type sell"
+                                *ngIf="row.is_sell">SELL</span></td>
                         <td>{{row.qty}}</td>
                         <td>{{row.avg_price}}</td>
                         <td>{{row.stock.last_price}}</td>
-                        <td>{{row.inv_amount}}</td>
-                        <td>{{row.cur_value}}</td>
+                        <td>{{row.inv_amount | number}}</td>
+                        <td>{{row.cur_value | number}}</td>
                         <td [ngClass]="{'red':row.inv_amount>row.cur_value,'green': row.cur_value>row.inv_amount}">
-                            {{row.pl_value}}</td>
+                            {{row.pl_value | number}}</td>
                         <td [ngClass]="{'red':row.inv_amount>row.cur_value,'green': row.cur_value>row.inv_amount}">
                             {{row.net_change}}%</td>
-                        <td [ngClass]="{'red':row.stock.prev_price>row.stock.last_price,'green': row.stock.prev_price<row.stock.last_price}">
+                        <td
+                            [ngClass]="{'red':row.stock.prev_price>row.stock.last_price,'green': row.stock.prev_price<row.stock.last_price}">
                             {{row.stock.per_change}}%</td>
                     </tr>
                 </tbody>
@@ -38,20 +50,24 @@
         </div>
         <div class="row total-report">
             <div class="col-md-4">
-                <h2 class="report-value">{{totalInvValue | number}}</h2>
+                <h2 class="report-value">{{totalInvValue.toFixed(2) | number}}</h2>
                 <div class="report-label">Total Investment</div>
             </div>
             <div class="col-md-4">
-                <h2 class="report-value">{{totalCurrentValue | number}}</h2>
+                <h2 class="report-value">{{totalCurrentValue.toFixed(2) | number}}</h2>
                 <div class="report-label">Current Value</div>
             </div>
             <div class="col-md-4">
                 <h2 class="report-value"
                     [ngClass]="{'red':totalInvValue>totalCurrentValue,'green': totalCurrentValue>totalInvValue}">
-                    {{formatNumber(totalCurrentValue-totalInvValue)}}<span>({{formatNumber(((totalCurrentValue-totalInvValue)/totalInvValue)*100)}}%)</span>
+                    {{totalCurrentValue-totalInvValue | number}}<span>({{(((totalCurrentValue-totalInvValue)/totalInvValue)*100).toFixed(2) | number}}%)</span>
                 </h2>
                 <div class="report-label">Profit and Loss</div>
             </div>
         </div>
+    </div>
+    <div class="empty-holding" *ngIf="holdingList.length===0">
+        <h4>No holding available.</h4>
+        <p>Place an order from your watchlist</p>
     </div>
 </div>

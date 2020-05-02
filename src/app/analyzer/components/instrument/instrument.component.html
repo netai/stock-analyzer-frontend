@@ -1,7 +1,131 @@
 <app-message position="top-right"></app-message>
 <app-loader [loading]="loading"></app-loader>
 <div class="instrument-page">
+    <div class="instrument-header">
+        <h4>Tata Consultancy Services Ltd.</h4>
+        <div>
+            <div class="symbol">TCS<span class="exchange-name">NSE</span></div>
+            <div class="price green">1250.40<span><i aria-hidden="true"
+                        class="fa fa-chevron-up"></i><span>100</span><span class="change-per">(10%)</span></span></div>
+        </div>
+    </div>
     <div class="instrument-info"></div>
     <div class="instrument-analysis"></div>
-    <div class="instrument-price"></div>
+    <div class="instrument-graph"></div>
+    <div class="instrument-price">
+        <div class="col-md-12">
+            <table class="table price-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Prev</th>
+                        <th>Open</th>
+                        <th>High</th>
+                        <th>Low</th>
+                        <th>Last</th>
+                        <th>Close</th>
+                        <th>Avg</th>
+                        <th>Traded Qty.</th>
+                        <th>Delivery Qty.</th>
+                        <th>Delivery %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2019-04-22</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>38.25</td>
+                        <td>37.1</td>
+                        <td>37.35</td>
+                        <td>37.4</td>
+                        <td>37.62</td>
+                        <td>14019</td>
+                        <td>5264</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination [boundaryLinks]="true" [totalItems]="77" previousText="&lsaquo;" nextText="&rsaquo;"
+                firstText="&laquo;" lastText="&raquo;"></pagination>
+        </div>
+    </div>
 </div>

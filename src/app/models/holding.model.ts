@@ -11,7 +11,9 @@ export interface HoldingModel {
 }
 
 export interface HoldingStockModel {
+    id: number;
     symbol: string;
+    exchange_name: string;
     last_price: number;
     prev_price: number;
     per_change: number;

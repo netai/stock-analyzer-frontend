@@ -3,6 +3,7 @@ import { AuthService } from '../services';
 import { ServerService } from './services';
 import { Router } from '@angular/router';
 import { MessageService, ErrorService } from '../shared/services';
+import { AuthUserModel } from '../models';
 
 @Component({
   selector: 'app-analyzer',
@@ -13,6 +14,7 @@ import { MessageService, ErrorService } from '../shared/services';
 export class AnalyzerComponent {
 
   loading: boolean = true;
+  userData: AuthUserModel;
 
     constructor(
       private _as: AuthService,
@@ -22,6 +24,7 @@ export class AnalyzerComponent {
       private _es: ErrorService
       ){
         this._executeOrder();
+        this.userData = this._as.getUserData();
     }
 
     private _executeOrder(): void {

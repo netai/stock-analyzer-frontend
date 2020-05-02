@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent, LoginComponent } from './components'
+import { HomeComponent, LoginComponent, SignupComponent } from './components'
 import { AuthService, ServerService } from './services'
 
 @NgModule({
@@ -18,7 +18,8 @@ import { AuthService, ServerService } from './services'
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   providers: [
     AuthService,
