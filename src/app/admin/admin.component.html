@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="container main-container">
+    <div class="admin-page">
+        <h4 class="page-title">Admin</h4>
+        <app-message position="top-right"></app-message>
+        <div class="tab-container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/import" routerLinkActive="active">Data Import</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

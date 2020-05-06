@@ -35,6 +35,10 @@ export class AuthService {
     return this._loggedIn;
   }
 
+  public isAdmin(): boolean {
+    return this._authData.user.admin;
+  }
+
   public logout(): void {
     this._loggedIn = false;
     localStorage.removeItem('AUTH_TOKEN');

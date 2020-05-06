@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent, LoginComponent, SignupComponent } from './components'
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminAuthGuard } from './shared/guards/adminAuth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,10 +24,17 @@ const routes: Routes = [
     path: 'analyzer',
     canActivate: [AuthGuard],
     data: {
-      heading: 'Portal',
-      moduleName: 'wps'
+      heading: 'Analyzer'
     },
     loadChildren: () => import('./analyzer/analyzer.module').then(m => m.AnalyzerModule)
+  },
+  {
+    path: 'admin',
+    canActivate: [AdminAuthGuard],
+    data: {
+      heading: 'Admin'
+    },
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   }
 ];
 

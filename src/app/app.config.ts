@@ -8,6 +8,9 @@ export class AppConfig {
         STOCK: '/stock',
         WATCHLIST: '/watchlist',
         ORDER: '/order',
-        HOLDING: '/holding'
+        HOLDING: '/holding',
+        IMPORT: {
+            DAY_REPORT: '/import/report/day',
+        }
     }
 }

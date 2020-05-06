@@ -2,7 +2,7 @@
 <div class="signup-page container main-container bg-white">
     <app-loader [loading]="loading"></app-loader>
     <div class="signup-box w-100" *ngIf="!loading">
-        <h3 class="text-center mb-5 box-heading">Sign Up</h3>
+        <h3 class="text-center mb-5 box-heading">Create your Account</h3>
         <div class="alert alert-danger" role="alert" *ngIf="messages.length>0">
             <div *ngFor="let message of messages">{{message}}</div>
         </div>
