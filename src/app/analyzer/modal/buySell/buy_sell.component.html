@@ -2,7 +2,10 @@
 <div class="modal-header" [ngClass]="{'sell-header': is_sell,'buy-header': !is_sell}">
   <div class="modal-title">
     <div class="pull-left">
-      <div class="instrument-info">Buy {{stock.symbol}}<span *ngIf="oredrFrm.get('qty').value"> × {{oredrFrm.get('qty').value}} Qty<span *ngIf="oredrFrm.get('price').value"> at ₹{{oredrFrm.get('price').value}}</span></span></div>
+      <div class="instrument-info"><span *ngIf="!is_sell">Buy</span><span *ngIf="is_sell">Sell</span>
+        {{stock.symbol}}<span *ngIf="oredrFrm.get('qty').value"><i class="fa fa-times"
+            aria-hidden="true"></i>{{oredrFrm.get('qty').value}} Qty<span *ngIf="oredrFrm.get('price').value"> at <i
+              class="fa fa-inr"></i>{{oredrFrm.get('price').value}}</span></span></div>
       <div class="instrument-price">₹{{stock.last_price}} on {{stock.exchange_name}}</div>
     </div>
   </div>
@@ -12,22 +15,23 @@
     <div class="form-row">
       <div class="form-group col-md-12">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="market"
-            value="market">
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()"
+            formControlName="order_type" id="market" value="market">
           <label class="form-check-label" for="market">MARKET</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="limit"
-            value="limit">
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()"
+            formControlName="order_type" id="limit" value="limit">
           <label class="form-check-label" for="limit">LIMIT</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="sl" value="sl">
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()"
+            formControlName="order_type" id="sl" value="sl">
           <label class="form-check-label" for="sl">SL</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()" formControlName="order_type" id="slm"
-            value="slm">
+          <input class="form-check-input" type="radio" name="order_type" (change)="selectOrderType()"
+            formControlName="order_type" id="slm" value="slm">
           <label class="form-check-label" for="slm">SL-M</label>
         </div>
       </div>
@@ -35,7 +39,7 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <input type="text" class="form-control" placeholder="Qty." formControlName="qty"
-          [ngClass]="{ 'invalid-field': isSubmitted && formControls.qty.errors }"  pattern="^[0-9]*$">
+          [ngClass]="{ 'invalid-field': isSubmitted && formControls.qty.errors }" pattern="^[0-9]*$">
         <label class="input-label">Qty.</label>
       </div>
       <div class="form-group col-md-4">

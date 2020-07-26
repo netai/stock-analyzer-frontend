@@ -20,10 +20,13 @@ export class ServerService {
         });
     }
 
-    public importDayReport(postData: any): Observable<any> {
+    public importData(postData: any): Observable<any> {
         let url: string = '';
         if(postData.importType === 'day_report_nse') {
             url = AppConfig.API_SERVICE.IMPORT.DAY_REPORT;
+        }
+        else if(postData.importType === 'stock_nse') {
+            url = AppConfig.API_SERVICE.IMPORT.STOCKS;
         }
         return this._http.get(AppConfig.API_BASE_URL + url, this.httpOptions)
             .pipe(

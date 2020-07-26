@@ -6,7 +6,8 @@ import {
     FundsComponent,
     HoldingsComponent,
     OrdersComponent,
-    InstrumentComponent
+    InstrumentComponent,
+    ActivityComponent
 } from './components';
 import { AnalyzerComponent } from './analyzer.component';
 
@@ -16,10 +17,11 @@ const routes: Routes = [
         component: AnalyzerComponent,
         children: [
             {path: '', component: DashboardComponent},
+            {path: 'activity', component: ActivityComponent},
             {path: 'funds', component: FundsComponent},
             {path: 'holdings', component: HoldingsComponent},
             {path: 'orders', component: OrdersComponent},
-            {path: 'instrument/:stock_id', component: InstrumentComponent}
+            {path: 'instrument/:public_id', component: InstrumentComponent}
         ]
     }
 ];

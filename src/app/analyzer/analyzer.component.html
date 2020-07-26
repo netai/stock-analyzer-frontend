@@ -1,3 +1,4 @@
+<app-message position="top-right"></app-message>
 <header class="header bg-white border-bottom shadow-sm" *ngIf="!loading">
     <nav class="navbar navbar-expand-lg">
         <div class="header-left">
@@ -9,6 +10,9 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/analyzer" routerLinkActive="active"
                             [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/analyzer/activity" routerLinkActive="active">Activity</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/analyzer/orders" routerLinkActive="active">Orders</a>

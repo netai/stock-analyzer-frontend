@@ -3,7 +3,7 @@
         <form [formGroup]="importForm" name="importForm" (submit)="import()">
             <div class="form-group mx-2">
                 <select class="form-control form-control-lg" formControlName="importType"
-                    [ngClass]="{ 'invalid-field': isSubmitted && formControls.importType.errors }" [attr.disabled]="loading">
+                    [ngClass]="{ 'invalid-field': isSubmitted && formControls.importType.errors }">
                     <option value="stock_nse">Import Stock From NSE</option>
                     <option value="day_report_nse">Import Day Report From NSE</option>
                 </select>
@@ -16,6 +16,6 @@
     </div>
     <div class="import-log">
         <app-loader [loading]="loading" [type]="'small'" [showText]="true"></app-loader>
-        <p *ngFor="let log of importLog">{{log}}</p>
+        <p *ngFor="let log of importLog" [ngClass]="{'highlight': log.indexOf('INSERTED') > 0 || log.indexOf('REPLACED') > 0}">{{log}}</p>
     </div>
 </div>

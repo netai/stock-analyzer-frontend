@@ -3,6 +3,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AnalyzerRoutingModule } from './analyzer.routing';
 import { SharedModule } from '../shared/shared.module';
 import { AnalyzerComponent } from './analyzer.component';
@@ -12,7 +13,8 @@ import {
     FundsComponent,
     HoldingsComponent,
     OrdersComponent,
-    InstrumentComponent
+    InstrumentComponent,
+    ActivityComponent
 } from './components';
 import { StockService, ServerService } from './services';
 import { BuySellComponent } from './modal';
@@ -24,7 +26,8 @@ import { BuySellComponent } from './modal';
         TypeaheadModule.forRoot(),
         ModalModule.forRoot(),
         PaginationModule.forRoot(),
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        BsDatepickerModule.forRoot(),
     ],
     declarations: [
         DashboardComponent,
@@ -34,7 +37,8 @@ import { BuySellComponent } from './modal';
         HoldingsComponent,
         OrdersComponent,
         InstrumentComponent,
-        BuySellComponent
+        BuySellComponent,
+        ActivityComponent
     ],
     entryComponents: [
         BuySellComponent

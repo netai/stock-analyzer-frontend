@@ -28,14 +28,15 @@ export class ImportComponent implements OnInit {
 
   ngOnInit() {
     this.importForm = this._fb.group({
-      importType: ['day_report_nse', Validators.required]
+      importType: ['stock_nse', Validators.required]
     });
   }
 
   public import(): void {
     this.loading = true;
     this.importLog = [];
-    this._ss.importDayReport(this.importForm.value)
+    this.formControls.importType.disable();
+    this._ss.importData(this.importForm.value)
       .subscribe(
         importLog => {
           if (importLog.status === 'success') {
@@ -46,6 +47,7 @@ export class ImportComponent implements OnInit {
           }
           this._ms.showMessage();
           this.loading = false;
+          this.formControls.importType.enable();
         },
         error => {
           this._errorHandler(error);

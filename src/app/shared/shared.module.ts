@@ -8,7 +8,7 @@ import {
     LoaderComponent,
     MessageComponent
 } from './components';
-import { MessageService, ErrorService } from './services';
+import { MessageService, ErrorService, UtilService } from './services';
 
 @NgModule({
     imports: [
@@ -25,7 +25,8 @@ import { MessageService, ErrorService } from './services';
     ],
     providers: [
         MessageService,
-        ErrorService
+        ErrorService,
+        UtilService
     ],
     entryComponents: [],
     exports: [

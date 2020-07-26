@@ -9,11 +9,10 @@ export interface StockModel {
     company_detail: string;
     comapany_website: string;
     exchange_name: string;
-    stock_report?: StockReport[];
+    stock_report?: StockReport;
 }
 
 export interface StockReport {
-    id: number;
     date: Date;
     prev_price: number;
     open_price: number;
@@ -24,5 +23,6 @@ export interface StockReport {
     avg_price: number;
     traded_qty: number;
     delivery_qty: number;
-    series: string;
+    delivery_per: number;
+    change_per: number;
 }

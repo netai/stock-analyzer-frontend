@@ -9,8 +9,11 @@ export class AppConfig {
         WATCHLIST: '/watchlist',
         ORDER: '/order',
         HOLDING: '/holding',
+        STOCK_REPORT: '/stock/report',
+        ACTIVITY: '/activity',
         IMPORT: {
             DAY_REPORT: '/import/report/day',
+            STOCKS: '/import/stock'
         }
     }
 }

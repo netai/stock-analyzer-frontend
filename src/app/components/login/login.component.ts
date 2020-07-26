@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
             });
             let redirectUrl = this._as.getRedirectUrl() || '/analyzer';
             this._router.navigateByUrl(redirectUrl);
+            this.messages.push('You are not Authorized person.');
+            this.loading = false;
           },
           error => {
             if (error.status === 401 || error.status === 500) {
@@ -69,6 +71,8 @@ export class LoginComponent implements OnInit {
             this._as.authenticate(authData.data);
             let redirectUrl = this._as.getRedirectUrl() || '/analyzer';
             this._router.navigateByUrl(redirectUrl);
+            this.messages.push('You are not Authorized person.');
+            this.loading = false;
           },
           error => {
             if (error.status === 401 || error.status === 500) {

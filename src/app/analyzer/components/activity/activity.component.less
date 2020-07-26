@@ -1,0 +1,75 @@
+.analyzer-activity-page {
+    padding: 2rem;
+    position: relative;
+    .activity-box {
+        border: 1px solid #ebebeb;
+        margin-bottom: 3rem;
+        .box-heading {
+            margin: 0;
+            padding: 0.5rem;
+            color: #4a4a4a;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ebebeb;
+            font-weight: 400;
+            font-size: 1.2rem;
+            span {
+                font-weight: bold;
+                padding: 0 1rem;
+            }
+            .small-input {
+                font-size: 1rem;
+                width: 2rem;
+            }
+            .mid-input {
+                font-size: 1rem;
+                width: 5rem;
+            }
+        }
+        .box-body {
+            height: 20rem;
+            overflow: auto;
+            .instrument {
+                position: relative;
+                color: #4a4a4a;
+                border-bottom: 1px solid #f1f1f1;
+                cursor: pointer;
+                text-transform: uppercase;
+                padding: 1rem;
+                .symbol {
+                    display: inline-block;
+                    width: 40%;
+                    .exchange-name {
+                        padding: 0.1rem 0.5rem;
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                        background-color: #ebebeb;
+                    }
+                }
+                .price {
+                    display: inline-block;
+                    width: 34%;
+                    span, i {
+                        margin-right: .3rem;
+                    }
+                }
+                .box-value {
+                    text-align: right;
+                    display: inline-block;
+                    width: 26%;
+                }
+            }
+        }
+        &.tow-col-box {
+            .box-body {
+                .instrument {
+                    .symbol {
+                        width: 50%;
+                    }
+                    .price {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

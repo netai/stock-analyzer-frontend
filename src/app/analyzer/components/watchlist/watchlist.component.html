@@ -12,18 +12,18 @@
     <div class="instrument-list">
         <div class="instrument" [ngClass]="{'instrument-red': item.last_price<item.prev_price,'instrument-green': item.last_price>item.prev_price}" *ngFor="let item of activeWatchlistStocks">
             <div class="info">
-                <span class="symbol">{{item.symbol}}</span>
+                <span class="symbol">{{item.symbol}}<span class="exchange-name">{{item.exchange_name}}</span></span>
                 <span class="price">
                     <span class="change-per">{{item.change_per}}%</span>
-                    <i class="fa" [ngClass]="{'fa-chevron-down': item.last_price<item.prev_price,'fa-chevron-up': item.last_price>item.prev_price}" aria-hidden="true"></i>
+                    <i class="fa" [ngClass]="{'fa-chevron-down': item.last_price<item.prev_price,'fa-chevron-up': item.last_price>item.prev_price}"></i>
                     <span class="close-price">{{item.last_price}}</span>
                 </span>
             </div>
             <div class="action">
-                <button type="button" (click)="buySell(item, false)" class="btn btn-buy-sm">B</button>
-                <button type="button" (click)="buySell(item, true)" class="btn btn-sell-sm">S</button>
-                <a type="button" class="btn btn-icon btn-chart" [routerLink]="['/analyzer/instrument', item.id]"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
-                <button type="button" class="btn btn-icon" (click)="deleteStock(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button type="button" *ngIf="item.series === 'EQ'" (click)="buySell(item, false)" class="btn btn-buy-sm">B</button>
+                <button type="button" *ngIf="item.series === 'EQ'" (click)="buySell(item, true)" class="btn btn-sell-sm">S</button>
+                <a type="button" class="btn btn-icon btn-chart" [routerLink]="['/analyzer/instrument', item.public_id]"><i class="fa fa-line-chart"></i></a>
+                <button type="button" class="btn btn-icon" (click)="deleteStock(item.id)"><i class="fa fa-trash-o"></i></button>
             </div>
         </div>
         <div class="empty-watchlist" *ngIf="activeWatchlistStocks.length===0">

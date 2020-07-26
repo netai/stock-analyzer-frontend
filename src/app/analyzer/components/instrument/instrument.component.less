@@ -1,5 +1,7 @@
 .instrument-page {
     padding: 2rem;
+    font-size: 1.1rem;
+    position: relative;
     .instrument-header {
         margin: 0;
         padding: 0;
@@ -14,7 +16,7 @@
         .symbol {
             display: inline-block;
             margin-right: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             .exchange-name {
                 padding: .1rem .5rem;
                 font-size: .7rem;
@@ -36,21 +38,72 @@
     }
     .instrument-price {
         margin-bottom: 6rem;
+        position: relative;
         .price-table {
-            tr {
-                th {
-                    color: #9b9b9b;
-                    font-weight: 400;
-                }
-                &:hover {
-                    td {
-                        background-color: #ebebeb;
+            .table {
+                tr {
+                    th {
+                        color: #9b9b9b;
+                        font-weight: 400;
+                    }
+                    &:hover {
+                        td {
+                            background-color: #ebebeb;
+                        }
                     }
                 }
             }
         }
+        .search-section {
+            margin-bottom: 1rem;
+        }
     }
     .instrument-analysis {
+        margin-bottom: 5rem;
+        .col-label-5 {
+            width: 50%;
+            display: inline-block;
+            padding-bottom: .5rem;
+        }
+        .col-value-5 {
+            width: 50%;
+            display: inline-block;
+            font-weight: 600;
+            padding-bottom: .5rem;
+            i {
+                margin-right: .2rem;
+                font-size: .9rem;
+            }
+        }
+        .tab-title {
+            font-weight: 400;
+            span {
+                font-size: 1.2rem;
+            }
+        }
+        .info-table {
+            padding-top: 1rem;
+            tr {
+                th {
+                    font-weight: 600;
+                    border-top: 0;
+                }
+                th, td {
+                    white-space: nowrap;
+                }
+                td:first-child, th:first-child {
+                    position: sticky;
+                    left: 0;
+                    background-color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .instrument-info {
+        margin-bottom: 2rem;
+    }
+    .instrument-graph {
         margin-bottom: 2rem;
     }
 }

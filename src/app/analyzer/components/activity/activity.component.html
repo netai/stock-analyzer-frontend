@@ -1,0 +1,94 @@
+<div class="analyzer-activity-page">
+    <app-loader [loading]="loading"></app-loader>
+    <h4 class="page-title">Activity</h4>
+    <form [formGroup]="activityForm" name="activityForm" (submit)="loadActivity()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="activity-box">
+                    <h4 class="box-heading">Top <input class="small-input" pattern="^[0-9]*$"
+                            formControlName="delivery_limit"
+                            [ngClass]="{ 'invalid-field': isSubmitted && formControls.delivery_limit.errors }"
+                            (blur)="loadActivity()" /> Delivery</h4>
+                    <div class="box-body">
+                        <div class="instrument" *ngFor="let row of activityData.top_delivery">
+                            <span class="symbol">{{row.symbol}}<span
+                                    class="exchange-name">{{row.exchange_name}}</span></span>
+                            <span class="price"
+                                [ngClass]="{'green': row.prev_price<row.last_price,'red': row.prev_price>row.last_price}">
+                                <span>{{row.last_price}}</span>
+                                <i class="fa"
+                                    [ngClass]="{'fa-chevron-up': row.prev_price<row.last_price,'fa-chevron-down': row.prev_price>row.last_price}"></i>
+                                <span>{{row.change_per}}%</span>
+                            </span>
+                            <span class="box-value">{{row.delivery_per}}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="activity-box">
+                    <h4 class="box-heading">Top <input class="small-input" pattern="^[0-9]*$"
+                            formControlName="volumn_limit"
+                            [ngClass]="{ 'invalid-field': isSubmitted && formControls.volumn_limit.errors }"
+                            (blur)="loadActivity()" /> Volumn</h4>
+                    <div class="box-body">
+                        <div class="instrument" *ngFor="let row of activityData.top_volumn">
+                            <span class="symbol">{{row.symbol}}<span
+                                    class="exchange-name">{{row.exchange_name}}</span></span>
+                            <span class="price"
+                                [ngClass]="{'green': row.prev_price<row.last_price,'red': row.prev_price>row.last_price}">
+                                <span>{{row.last_price}}</span>
+                                <i class="fa"
+                                    [ngClass]="{'fa-chevron-up': row.prev_price<row.last_price,'fa-chevron-down': row.prev_price>row.last_price}"></i>
+                                <span>{{row.change_per}}%</span>
+                            </span>
+                            <span class="box-value">{{row.traded_qty}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="activity-box tow-col-box">
+                    <h4 class="box-heading">Top <input class="small-input" pattern="^[0-9]*$"
+                            formControlName="gainer_limit"
+                            [ngClass]="{ 'invalid-field': isSubmitted && formControls.gainer_limit.errors }"
+                            (blur)="loadActivity()" /> Gainer</h4>
+                    <div class="box-body">
+                        <div class="instrument" *ngFor="let row of activityData.top_gainer">
+                            <span class="symbol">{{row.symbol}}<span
+                                    class="exchange-name">{{row.exchange_name}}</span></span>
+                            <span class="price"
+                                [ngClass]="{'green': row.prev_price<row.last_price,'red': row.prev_price>row.last_price}">
+                                <span>{{row.last_price}}</span>
+                                <i class="fa"
+                                    [ngClass]="{'fa-chevron-up': row.prev_price<row.last_price,'fa-chevron-down': row.prev_price>row.last_price}"></i>
+                                <span>{{row.change_per}}%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="activity-box tow-col-box">
+                    <h4 class="box-heading">Top <input class="small-input" pattern="^[0-9]*$"
+                            formControlName="loser_limit"
+                            [ngClass]="{ 'invalid-field': isSubmitted && formControls.loser_limit.errors }"
+                            (blur)="loadActivity()" /> Loser</h4>
+                    <div class="box-body">
+                        <div class="instrument" *ngFor="let row of activityData.top_loser">
+                            <span class="symbol">{{row.symbol}}<span
+                                    class="exchange-name">{{row.exchange_name}}</span></span>
+                            <span class="price"
+                                [ngClass]="{'green': row.prev_price<row.last_price,'red': row.prev_price>row.last_price}">
+                                <span>{{row.last_price}}</span>
+                                <i class="fa"
+                                    [ngClass]="{'fa-chevron-up': row.prev_price<row.last_price,'fa-chevron-down': row.prev_price>row.last_price}"></i>
+                                <span>{{row.change_per}}%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

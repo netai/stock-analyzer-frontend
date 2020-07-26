@@ -1,150 +1,315 @@
-<app-message position="top-right"></app-message>
 <app-loader [loading]="loading"></app-loader>
-<div class="instrument-page">
+<div class="instrument-page" *ngIf="!loading">
     <div class="instrument-header">
-        <h4>Tata Consultancy Services Ltd.</h4>
+        <h4>{{stockDetail.company_name}}</h4>
         <div>
-            <div class="symbol">TCS<span class="exchange-name">NSE</span></div>
-            <div class="price green">1250.40<span><i aria-hidden="true"
-                        class="fa fa-chevron-up"></i><span>100</span><span class="change-per">(10%)</span></span></div>
+            <div class="symbol">
+                {{stockDetail.symbol}}<span class="exchange-name">{{stockDetail.exchange_name}}</span>
+            </div>
+            <div class="price"
+                [ngClass]="{'green':stockDetail.stock_report.prev_price<stockDetail.stock_report.last_price, 'red':stockDetail.stock_report.prev_price>stockDetail.stock_report.last_price}">
+                {{stockDetail.stock_report.last_price}}<span><i aria-hidden="true" class="fa"
+                        [ngClass]="{'fa-chevron-up':stockDetail.stock_report.prev_price<stockDetail.stock_report.last_price, 'fa-chevron-down':stockDetail.stock_report.prev_price>stockDetail.stock_report.last_price}"></i><span>{{(stockDetail.stock_report.last_price - stockDetail.stock_report.prev_price) | number:'1.2-2'}}</span><span
+                        class="change-per">({{stockDetail.stock_report.change_per}}%)</span></span>
+            </div>
         </div>
     </div>
-    <div class="instrument-info"></div>
-    <div class="instrument-analysis">
+    <div class="instrument-info">{{stockDetail.company_detail}}</div>
+    <!--<div class="instrument-analysis">
         <tabset>
-            <tab heading="Patterns" class="mt-2">
+            <tab heading="Overview" class="mt-2">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="col-md-3">Pattern 1</div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3">Pattern 2</div>
-                        <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-label-5">Market Cap:</div>
+                        <div class="col-value-5"><i class="fa fa-inr"></i>710,627 Cr.</div>
                     </div>
                 </div>
             </tab>
-            <tab heading="Fundamental" class="mt-2">
+            <tab heading="Analysis" class="mt-2">
+                <h4>Title 2</h4>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages</p>
+            </tab>
+            <tab heading="Quarters" class="mt-2">
+                <h4 class="tab-title">Quarterly Results <span>(Figures in Rs. Crores)</span></h4>
+                <div class="info-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Jun 2017</th>
+                                <th>Sep 2017</th>
+                                <th>Dec 2017</th>
+                                <th>Mar 2018</th>
+                                <th>Jun 2018</th>
+                                <th>Sep 2018</th>
+                                <th>Dec 2018</th>
+                                <th>Mar 2019</th>
+                                <th>Jun 2019</th>
+                                <th>Sep 2019</th>
+                                <th>Dec 2019</th>
+                                <th>Mar 2020</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                                <td>106,297</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tab>
+            <tab heading="Profit & Loss" class="mt-2">
+                <h4>Title 2</h4>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages</p>
+            </tab>
+            <tab heading="Balance Sheet" class="mt-2">
+                <h4>Title 2</h4>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages</p>
+            </tab>
+            <tab heading="Cash Flow" class="mt-2">
+                <h4>Title 2</h4>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages</p>
+            </tab>
+            <tab heading="Ratios" class="mt-2">
+                <h4>Title 2</h4>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages</p>
+            </tab>
+            <tab heading="Documents" class="mt-2">
+                <h4>Title 2</h4>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages</p>
+            </tab>
+            <tab heading="News" class="mt-2">
                 <h4>Title 2</h4>
                 <p>It has survived not only five centuries, but also the leap into electronic typesetting,
                     remaining essentially unchanged. It was popularised in the 1960s with the release of
                     Letraset sheets containing Lorem Ipsum passages</p>
             </tab>
         </tabset>
-    </div>
+    </div>-->
     <div class="instrument-graph"></div>
     <div class="instrument-price">
-        <div class="col-md-12">
-            <table class="table price-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Prev</th>
-                        <th>Open</th>
-                        <th>High</th>
-                        <th>Low</th>
-                        <th>Last</th>
-                        <th>Close</th>
-                        <th>Avg</th>
-                        <th>Traded Qty.</th>
-                        <th>Delivery Qty.</th>
-                        <th>Delivery %</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>2019-04-22</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>38.25</td>
-                        <td>37.1</td>
-                        <td>37.35</td>
-                        <td>37.4</td>
-                        <td>37.62</td>
-                        <td>14019</td>
-                        <td>5264</td>
-                        <td>30</td>
-                    </tr>
-                </tbody>
-            </table>
-            <pagination [boundaryLinks]="true" [totalItems]="77" previousText="&lsaquo;" nextText="&rsaquo;"
-                firstText="&laquo;" lastText="&raquo;"></pagination>
+        <div class="col-md-12 search-section">
+            <form class="form-inline" [formGroup]="searchForm" name="searchForm" (submit)="searchStockReport()">
+                <div class="form-group mr-2">
+                    <input type="text" class="form-control" placeholder="From Date" formControlName="from_date"
+                        [ngClass]="{ 'invalid-field': isSubmitted && formControls.from_date.errors }"
+                        [bsConfig]="bsConfig" bsDatepicker>
+                    <label class="input-label">From Date</label>
+                </div>
+                <span class="mr-2">To</span>
+                <div class="form-group mr-2">
+                    <input type="text" class="form-control" placeholder="To Date" formControlName="to_date"
+                        [ngClass]="{ 'invalid-field': isSubmitted && formControls.to_date.errors }"
+                        [bsConfig]="bsConfig" bsDatepicker>
+                    <label class="input-label">To Date</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <div class="price-table">
+            <app-loader [loading]="reportLoading" [type]="'small'"></app-loader>
+            <div class="empty-record" *ngIf="reportList.length===0">
+                <h4>No Result Found.</h4>
+                <p>Please change the search criteria.</p>
+            </div>
+            <div class="search-result" *ngIf="reportList.length>0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Prev</th>
+                            <th>Open</th>
+                            <th>High</th>
+                            <th>Low</th>
+                            <th>Last</th>
+                            <th>Close</th>
+                            <th>Avg</th>
+                            <th>Tra. Qty.</th>
+                            <th>Deli. Qty.</th>
+                            <th>Deli. %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of reportList">
+                            <td>{{row.date}}</td>
+                            <td>{{row.prev_price}}</td>
+                            <td>{{row.open_price}}</td>
+                            <td>{{row.high_price}}</td>
+                            <td>{{row.low_price}}</td>
+                            <td
+                                [ngClass]="{'green': row.prev_price<row.last_price, 'red': row.prev_price>row.last_price}">
+                                {{row.last_price}}
+                            </td>
+                            <td>{{row.close_price}}</td>
+                            <td>{{row.avg_price}}</td>
+                            <td>{{row.traded_qty}}</td>
+                            <td>{{row.delivery_qty}}</td>
+                            <td>{{row.delivery_per}}%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination [boundaryLinks]="true" [totalItems]="totalStockReport" [itemsPerPage]="30" [maxSize]="5"
+                    (pageChanged)="reportPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;"
+                    firstText="&laquo;" lastText="&raquo;"></pagination>
+            </div>
         </div>
     </div>
 </div>

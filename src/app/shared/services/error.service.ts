@@ -21,9 +21,26 @@ export class ErrorService {
         else if(error.status === 401 && error.statusText === 'UNAUTHORIZED') {
             this._authErrorHandler();
         }
+        else if(error.status === 400 && error.statusText === 'BAD REQUEST') {
+            this._badRequestErrorHandler(error.error);
+        }
         else {
             this._otherErrorHandler(error.error);
         }
+    }
+
+    private _badRequestErrorHandler(error: any): void {
+        let errStr = '';
+        if(typeof error.message === 'object'){
+            Object.keys(error.message).forEach((value) => {
+                errStr += value + ': ' + error.message[value];
+            });
+        } else {
+            errStr = error.message;
+        }
+        
+        this._ms.addMessage({ message: errStr, title: 'Bade Request', type: 'error' });
+        this._ms.showMessage();
     }
 
     private _authErrorHandler(): void {
@@ -37,6 +54,7 @@ export class ErrorService {
     }
 
     private _otherErrorHandler(error: any): void {
+        console.log(error);
         if(error.status === 'fail') {
             this._ms.addMessage({ message: error.message, title: 'Error', type: 'error' });
         }
